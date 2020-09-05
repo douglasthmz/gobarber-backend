@@ -23,7 +23,7 @@ export default class SESMailProvider implements IMailProvider {
   }
 
   public async sendMail({
-    // to,
+    to,
     subject,
     from,
     templateData,
@@ -35,8 +35,8 @@ export default class SESMailProvider implements IMailProvider {
         address: from?.email || email,
       },
       to: {
-        name: 'success@simulator.amazonses.com',
-        address: 'success@simulator.amazonses.com',
+        name: to.name,
+        address: to.email,
       },
       subject,
       html: await this.mailTemplateProvider.parse(templateData),
