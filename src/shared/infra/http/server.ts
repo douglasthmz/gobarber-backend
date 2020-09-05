@@ -24,7 +24,7 @@ app.use(cors());
 app.use(express.json());
 
 // Setting up file upload
-app.use('/files', express.static(uploadConfig.tmpFolder));
+app.use('/files', express.static(uploadConfig.uploadFolder));
 
 // setting up all routes
 app.use(routes);
