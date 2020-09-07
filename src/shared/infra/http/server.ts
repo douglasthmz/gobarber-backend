@@ -10,12 +10,16 @@ import { errors } from 'celebrate';
 import uploadConfig from '@config/upload';
 import routes from '@shared/infra/http/routes';
 import AppError from '@shared/errors/AppError';
+import rateLimiter from './middlewares/rateLimiter';
 
 // Container initialization
 import '@shared/container';
 import '@shared/infra/typeorm';
 
 const app = express();
+
+// Rate limiter
+app.use(rateLimiter);
 
 // CORS policy
 app.use(cors());
