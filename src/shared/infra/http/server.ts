@@ -18,9 +18,6 @@ import '@shared/infra/typeorm';
 
 const app = express();
 
-// Rate limiter
-app.use(rateLimiter);
-
 // CORS policy
 app.use(cors());
 
@@ -29,6 +26,9 @@ app.use(express.json());
 
 // Setting up file upload
 app.use('/files', express.static(uploadConfig.uploadFolder));
+
+// Rate limiter
+app.use(rateLimiter);
 
 // setting up all routes
 app.use(routes);
